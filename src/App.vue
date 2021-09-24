@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <Header />
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <Header @search="searchFilm" />
+    
   </div>
 </template>
 
@@ -13,6 +12,11 @@ export default {
   name: 'App',
   components: {
     Header
+  }, 
+  methods: {
+    searchFilm(inputText){
+      console.log(inputText);
+    }
   }
 }
 </script>

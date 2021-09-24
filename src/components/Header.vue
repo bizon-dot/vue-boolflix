@@ -6,7 +6,9 @@
     </div>
 
     <div class="search-box">
-      <input type="text" placeholder="Search" v-model="inputText" @keyup.enter="$emit('search','inputText')" />
+      <input type="text" placeholder="Search" 
+          v-model='inputText' 
+          @keyup.enter="$emit('search',inputText)" />
       </div>
 
   </div>
@@ -17,7 +19,7 @@
     name: 'Header',
     data() {
       return {
-        inputText : ' ',
+        inputText : ""
       }
     }
   }
@@ -32,7 +34,7 @@
     justify-content: space-between;
     align-items: center;
     .logo{
-      padding: 0 20px;
+      padding: 0 em(20);
     h1 {
       font-family: 'Bebas Neue', cursive;
       text-transform: uppercase;
