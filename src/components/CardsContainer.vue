@@ -2,6 +2,7 @@
   <main>
     <section class="movies">
       <h2>Films</h2>
+      <span class="flag-icon flag-icon-it"></span>
       <ul class="cards">
         <li v-for="(card, index) in data" :key="index">
            
@@ -28,6 +29,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  @import "./style/general.scss";
 
 
 </style>

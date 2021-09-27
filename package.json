@@ -11,6 +11,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "axios": "^0.21.4",
     "core-js": "^3.6.5",
+    "flag-icon-css": "^3.5.0",
     "fontsource-bebas-neue": "^4.0.0",
     "vue": "^2.6.11",
     "vue-axios": "^3.3.7"
