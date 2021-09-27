@@ -25,17 +25,20 @@
         //https://api.themoviedb.org/3/search/movie?api_key=b088cb04b38937d2c60babc36cfd68ef&query=matrix
         apiUrl: "https://api.themoviedb.org/3/search/",
         apiKey: 'b088cb04b38937d2c60babc36cfd68ef',
+        movie: 'movie',
+        tv: 'tv',
+        dataTmp:[],
+        dataTv: [],
         dataFilm: [],
       }
     },
     methods: {
-      getData(apiConf){
+      getData(apiConf, type){
         axios
-        .get(this.apiUrl + 'movie',apiConf)
+        .get(this.apiUrl + type,apiConf)
         .then(res => {
-          console.log(res.data);
-          this.dataFilm = res.data.results;
-
+         
+          this.dataTmp = res.data.results;
         }).catch(err => {
           console.log("Error ", err);
         })
@@ -48,7 +51,20 @@
               query: inputText
           }
         };
-      this.getData(apiConf);
+        
+       this.getData(apiConf, this.movie);
+       this.dataFilm = this.dataTmp;
+      },
+      searchTv(inputText) {
+        const apiConf = {
+          params: {
+              api_key: this.apiKey,
+              query: inputText
+          }
+        };
+        
+      this.getData(apiConf, this.tv);
+      this.dataTv = this.dataTmp;
        
       }
     }
@@ -70,7 +86,6 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      // height: 100%;
       background-color: white;
 
       svg {

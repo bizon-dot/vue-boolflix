@@ -2,7 +2,7 @@
   <main>
     <section class="movies">
       <h2>Films</h2>
-      <span class="flag-icon flag-icon-it"></span>
+     
       <ul class="cards">
         <li v-for="(card, index) in data" :key="index">
            
@@ -11,10 +11,9 @@
           {{card.original_title}}
         
           {{card.vote_average}}
+     
           <span v-bind:class="'flag-icon flag-icon-' + card.original_language"></span>
-          
-        
-         
+
         </li>
 
       </ul>
