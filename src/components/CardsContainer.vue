@@ -11,8 +11,10 @@
           {{card.original_title}}
         
           {{card.vote_average}}
+          <span v-bind:class="'flag-icon flag-icon-' + card.original_language"></span>
+          
         
-          {{card.original_language}}
+         
         </li>
 
       </ul>
