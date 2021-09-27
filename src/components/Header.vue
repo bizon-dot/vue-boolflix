@@ -28,20 +28,27 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import '~fontsource-bebas-neue/latin-ext.css';
+  @import './style/general';
   .header {
     background: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .logo{
-      padding: 0 em(20);
+      padding:em(10);
     h1 {
       font-family: 'Bebas Neue', cursive;
       text-transform: uppercase;
       color:red;
       font-weight: 800;
-      padding: em(20);
+      
     }
+    
+    }
+    .search-box{
+      input{
+        margin-right: 1em;
+      }
     }
     
 

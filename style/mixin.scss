@@ -2,6 +2,6 @@
 
 $browser-context: 16;
 
-@function em($pixels, $browser-context) {
+@function em($pixels, $context: $browser-context) {
     @return #{$pixels/$context}em;
   }

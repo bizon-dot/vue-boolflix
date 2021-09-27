@@ -1,39 +1,24 @@
 <template>
   <div id="app">
     <Header @search="searchFilm" />
-   <!--  <div class="intro" v-if="(dataFilm.length < 1)">
-    <font-awesome-icon icon="user-secret" />
-    </div> -->
+    <CardsContainer :data = "dataFilm" />
+   
 
-    <div class="container-cards">
-      <div v-for="(film, index) in dataFilm" :key="index">
-        <!-- {{film}} -->
-        <p>
-          {{film.title}}
-        </p>
-        <p>
-          {{film.original_title}}
-        </p>
-        <p>
-          {{film.vote_average}}
-        </p>
-        <p>
-          {{film.original_language}}
-        </p>
-      </div>
 
-    </div>
   </div>
 </template>
 
 <script>
   import Header from './components/Header.vue';
+  import CardsContainer from './components/CardsContainer.vue';
+
   import axios from 'axios';
   
   export default {
     name: 'App',
     components: {
-      Header
+      Header,
+      CardsContainer
     },
     data() {
       return {
