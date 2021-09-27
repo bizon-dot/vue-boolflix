@@ -1,60 +1,102 @@
 <template>
   <div id="app">
     <Header @search="searchFilm" />
+   <!--  <div class="intro" v-if="(dataFilm.length < 1)">
+    <font-awesome-icon icon="user-secret" />
+    </div> -->
 
-    <div v-for="(film, index) in dataFilm" :key="index">
-      <!-- {{film}} -->
-      {{film.title}}
-      {{film.original_title}}
-      {{film.vote_average}}
-      {{film.original_language}} 
+    <div class="container-cards">
+      <div v-for="(film, index) in dataFilm" :key="index">
+        <!-- {{film}} -->
+        <p>
+          {{film.title}}
+        </p>
+        <p>
+          {{film.original_title}}
+        </p>
+        <p>
+          {{film.vote_average}}
+        </p>
+        <p>
+          {{film.original_language}}
+        </p>
+      </div>
+
     </div>
-    
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import axios from 'axios';
-
-export default {
-  name: 'App',
-  components: {
-    Header
-  }, 
-  data(){
-    return {
-      endPoint: "https://api.themoviedb.org/3/search/movie?api_key=b088cb04b38937d2c60babc36cfd68ef&language=en-US&query=",
-      dataFilm: [],
-    }
-  },
-  methods: {
-    searchFilm(inputText){
-      console.log(inputText);
-      let uri = this.endPoint + inputText;
-      console.log(uri);
-       axios.get(uri).then(res => {
+  import Header from './components/Header.vue';
+  import axios from 'axios';
+  
+  export default {
+    name: 'App',
+    components: {
+      Header
+    },
+    data() {
+      return {
+        //https://api.themoviedb.org/3/search/movie?api_key=b088cb04b38937d2c60babc36cfd68ef&query=matrix
+        apiUrl: "https://api.themoviedb.org/3/search/",
+        apiKey: 'b088cb04b38937d2c60babc36cfd68ef',
+        dataFilm: [],
+      }
+    },
+    methods: {
+      getData(apiConf){
+        axios
+        .get(this.apiUrl + 'movie',apiConf)
+        .then(res => {
           console.log(res.data);
           this.dataFilm = res.data.results;
-         
-         
+
         }).catch(err => {
           console.log("Error ", err);
         })
+
+      },
+      searchFilm(inputText) {
+        const apiConf = {
+          params: {
+              api_key: this.apiKey,
+              query: inputText
+          }
+        };
+      this.getData(apiConf);
+       
+      }
     }
   }
-}
 </script>
 
 <style lang="scss">
-@import "./style/general.scss";
-#app {
+  @import "./style/general.scss";
 
- /*  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px; */
-}
+  #app {
+
+    .intro {
+      background: black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      // height: 100%;
+      background-color: white;
+
+      svg {
+        width: 10%;
+      }
+    }
+
+
+
+    .container-cards {
+      background: $gray-nevada;
+    }
+  }
 </style>
