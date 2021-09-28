@@ -1,14 +1,10 @@
 <template>
   <main>
     <section class="movies">
-   
       <ul class="cards">
         <li v-for="(card, index) in data" :key="index" >
         <Card :card="card"/>
         </li>
-       
-
-   
       </ul>
     </section>
   </main>
@@ -30,6 +26,13 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "./style/general.scss";
+
+  .movies{
+    .cards{
+      display:flex;
+      flex-wrap: nowrap;
+    }
+  }
 
 
 </style>
