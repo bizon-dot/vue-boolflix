@@ -4,7 +4,8 @@
       <h2>Films</h2>
      
       <ul class="cards">
-        <li v-for="(card, index) in data" :key="index">
+        <Card v-for="(card, index) in data" :key="index"/>
+        <!-- <li v-for="(card, index) in data" :key="index">
            
           {{card.title}}
         
@@ -14,7 +15,7 @@
      
           <span v-bind:class="'flag-icon flag-icon-' + card.original_language"></span>
 
-        </li>
+        </li> -->
 
       </ul>
     </section>
@@ -22,8 +23,14 @@
 </template>
 
 <script>
+  import Card from './Card.vue';
+
   export default {
     name: 'CardsContainer',
+    componets: {
+        Card
+    },
+          
     props: ['data']
   }
 </script>
