@@ -1,10 +1,12 @@
 <template>
   <main>
     <section class="movies">
-      <h2>Films</h2>
-     
       <ul class="cards">
-        <Card v-for="(card, index) in data" :key="index"/>
+        <li v-for="(card, index) in data" :key="index">
+        <Card :card="card"/>
+        </li>
+       
+
    
       </ul>
     </section>
@@ -16,7 +18,7 @@
 
   export default {
     name: 'CardsContainer',
-    componets: {
+    components: {
         Card
     },
           

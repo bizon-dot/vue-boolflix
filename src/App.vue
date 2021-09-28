@@ -2,6 +2,7 @@
   <div id="app">
     <Header @search="searchFilm" />
     <CardsContainer :data = "dataFilm" />
+    <!-- <CardsContainer :data = "dataTv" /> -->
    
 
 
@@ -12,13 +13,14 @@
   import Header from './components/Header.vue';
   import CardsContainer from './components/CardsContainer.vue';
 
+
   import axios from 'axios';
   
   export default {
     name: 'App',
     components: {
       Header,
-      CardsContainer
+      CardsContainer,
     },
     data() {
       return {
