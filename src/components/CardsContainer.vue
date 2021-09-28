@@ -5,18 +5,7 @@
      
       <ul class="cards">
         <Card v-for="(card, index) in data" :key="index"/>
-        <!-- <li v-for="(card, index) in data" :key="index">
-           
-          {{card.title}}
-        
-          {{card.original_title}}
-        
-          {{card.vote_average}}
-     
-          <span v-bind:class="'flag-icon flag-icon-' + card.original_language"></span>
-
-        </li> -->
-
+   
       </ul>
     </section>
   </main>
