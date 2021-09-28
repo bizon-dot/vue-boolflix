@@ -1,6 +1,7 @@
 <template>
   <main>
     <section class="movies">
+      <h2>Films</h2>
       <ul class="cards">
         <li v-for="(card, index) in data" :key="index" >
         <Card :card="card"/>
