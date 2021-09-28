@@ -2,7 +2,7 @@
   <main>
     <section class="movies">
       <ul class="cards">
-        <li v-for="(card, index) in data" :key="index">
+        <li v-for="(card, index) in data" :key="index" >
         <Card :card="card"/>
         </li>
        
