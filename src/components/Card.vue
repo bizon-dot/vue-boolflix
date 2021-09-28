@@ -6,12 +6,12 @@
     <img v-else
     src="https://media.istockphoto.com/photos/cool-placeholder-for-your-picture-no-movie-screen-35mm-film-strip-picture-id1068817392?k=6&m=1068817392&s=170667a&w=0&h=hNRjLOOQ0p0iBsSsGZzi0lDWd9eCY0IK4jNQI5sVYVI="
     />
-   <!--  <div v-for=>
-      <i class="far fa-star"></i>
-    </div> -->
+    <div >
+      <i v-for= "n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'"></i>
+    </div>
     <br />
 
-    {{card.title}}
+    {{card.title ? card.title : card.name}}
 
     {{card.original_title}}
 
@@ -31,7 +31,12 @@
 <script>
   export default {
     name: 'Card',
-    props: ["card"]
+    props: ["card"],
+    methods: {
+      getVote(){
+        return Math.ceil(this.card.vote_average / 2)
+      }
+    }
   }
 </script>
 
