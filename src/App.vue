@@ -1,11 +1,9 @@
 <template>
+
   <div id="app">
     <Header @search="searchFilm" />
-    <CardsContainer :data = "dataFilm" />
-    <!-- <CardsContainer :data = "dataTv" /> -->
-   
-
-
+    <h1 v-if="(dataFilm.length > 0)"> Films </h1>
+    <CardsContainer :data="dataFilm" />
   </div>
 </template>
 
@@ -15,7 +13,8 @@
 
 
   import axios from 'axios';
-  
+
+
   export default {
     name: 'App',
     components: {
@@ -29,45 +28,47 @@
         apiKey: 'b088cb04b38937d2c60babc36cfd68ef',
         movie: 'movie',
         tv: 'tv',
-        dataTmp:[],
+        dataTmp: [],
         dataTv: [],
         dataFilm: [],
       }
     },
     methods: {
-      getData(apiConf, type){
+      getData(apiConf, type) {
         axios
-        .get(this.apiUrl + type,apiConf)
-        .then(res => {
-         
-          this.dataTmp = res.data.results;
-        }).catch(err => {
-          console.log("Error ", err);
-        })
+          .get(this.apiUrl + type, apiConf)
+          .then(res => {
+
+            this.dataTmp = res.data.results;
+          }).catch(err => {
+            console.log("Error ", err);
+          })
 
       },
       searchFilm(inputText) {
         const apiConf = {
           params: {
-              api_key: this.apiKey,
-              query: inputText
+            api_key: this.apiKey,
+            query: inputText
           }
         };
-        
-       this.getData(apiConf, this.movie);
-       this.dataFilm = this.dataTmp;
+
+        this.getData(apiConf, this.movie);
+        this.dataFilm = [];
+        this.dataFilm = this.dataTmp;
       },
       searchTv(inputText) {
         const apiConf = {
           params: {
-              api_key: this.apiKey,
-              query: inputText
+            api_key: this.apiKey,
+            query: inputText
           }
         };
-        
-      this.getData(apiConf, this.tv);
-      this.dataTv = this.dataTmp;
-       
+
+        this.getData(apiConf, this.tv);
+        this.dataTv = [];
+        this.dataTv = this.dataTmp;
+
       }
     }
   }

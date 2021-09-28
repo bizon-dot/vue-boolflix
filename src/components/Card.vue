@@ -1,5 +1,15 @@
 <template>
   <li>
+    <img v-if="card.poster_path"
+    :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
+    :alt="card.title ? card.title : card.name">
+    <img v-else
+    src="https://media.istockphoto.com/photos/cool-placeholder-for-your-picture-no-movie-screen-35mm-film-strip-picture-id1068817392?k=6&m=1068817392&s=170667a&w=0&h=hNRjLOOQ0p0iBsSsGZzi0lDWd9eCY0IK4jNQI5sVYVI="
+    />
+   <!--  <div v-for=>
+      <i class="far fa-star"></i>
+    </div> -->
+    <br />
 
     {{card.title}}
 
@@ -10,9 +20,9 @@
     {{card.original_language}}
 
     <span v-if="card.original_language == 'en'" class="flag-icon flag-icon-gb-eng"></span>
-    <span v-else v-bind:class="'flag-icon flag-icon-' + card.original_language"></span> 
-    <br />
-    <img :src="'https://image.tmdb.org/t/p/w342' + card.backdrop_path">
+    <span v-else v-bind:class="'flag-icon flag-icon-' + card.original_language"></span>
+
+    <!-- <img :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"> -->
 
   </li>
 
