@@ -1,5 +1,5 @@
 <template>
-  <li>
+
     <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -39,8 +39,7 @@
     <span v-else v-bind:class="'flag-icon flag-icon-' + card.original_language"></span> -->
 
     <!-- <img :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"> -->
-  <br />
-  </li>
+
 
 </template>
 
@@ -62,7 +61,7 @@
   background-color: transparent;
   width: 342px;
   height: 500px;
-  border: 1px solid #f1f1f1;
+
   //perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -92,14 +91,14 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
+  
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
   background-color: black;
-  color: white;
+
   transform: rotateY(180deg);
 }
 
