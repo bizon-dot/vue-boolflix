@@ -12,9 +12,9 @@
       </div>
       <div class="flip-card-back">
         <h4>Titolo: {{card.title ? card.title : card.name}}</h4>
-        <h4>Titolo originale: {{card.original_title}}</h4>
+        <h4 v-if="card.original_title">Titolo originale: {{card.original_title}}</h4>
         <h4 >Rating:<i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'" style="color:yellow"></i></h4>
-        <h4>Overview: {{card.overview}}</h4>
+        <h4 v-if="card.overview">Overview: {{card.overview}}</h4>
 
       </div>
     </div>
