@@ -3,9 +3,16 @@
   <div id="app">
     <Header @search="searchAll" />
     <div class="container">
-    <h1 v-if="(dataFilm.length > 0)"> Films </h1>
-    <CardsContainer :data="dataFilm" />
-    <CardsContainer :data="dataTv" />
+      <div v-if="(loading)">
+        <h1> Films </h1>
+        <CardsContainer :data="dataFilm" />
+        <CardsContainer :data="dataTv" />
+      </div>
+      <div v-else>
+        <h1> Most Popular </h1>
+        <CardsContainer :data="dataTrending" />
+       
+      </div>
     </div>
   </div>
 </template>
@@ -22,8 +29,8 @@
     },
     data() {
       return {
-        //https://api.themoviedb.org/3/search/movie?api_key=b088cb04b38937d2c60babc36cfd68ef&query=matrix
         apiUrl: "https://api.themoviedb.org/3/search/",
+        apiUrlTrending: " https://api.themoviedb.org/3/trending/all/day",
         apiString: '?api_key=',
         apiKey: 'ce4bf3c43722932619dd2d67366a9e66&query=',
         query: '',
@@ -31,31 +38,42 @@
         tv: 'tv',
         dataTv: [],
         dataFilm: [],
+        dataTrending: [],
+        loading: false,
       }
     },
+    created: function () {
+      axios
+        .get(this.apiUrlTrending + this.apiString + this.apiKey)
+        .then(res => {
+          this.dataTrending = res.data.results;
+        })
+
+    },
     methods: {
-        searchAll(input) {
+      searchAll(input) {
         this.query = input;
         this.searchFilm();
         this.searchTv();
       },
 
-     
+
       searchFilm() {
         axios
-        .get(this.apiUrl + this.movie + this.apiString + this.apiKey + this.query)
-        .then(res =>{
-          this.dataFilm = res.data.results
-        })
+          .get(this.apiUrl + this.movie + this.apiString + this.apiKey + this.query)
+          .then(res => {
+            this.dataFilm = res.data.results;
+            this.loading = true;
+          })
       },
       searchTv() {
         axios
-        .get(this.apiUrl + this.tv + this.apiString + this.apiKey + this.query)
-        .then(res =>{
-          this.dataTv = res.data.results
-        })
-      },
-    
+          .get(this.apiUrl + this.tv + this.apiString + this.apiKey + this.query)
+          .then(res => {
+            this.dataTv = res.data.results
+          })
+      }
+
     }
   }
 </script>
@@ -83,10 +101,9 @@
 
     .container {
       background: $gray-nevada;
-   
-     
+
+
       margin: 0 auto;
     }
   }
-
 </style>
