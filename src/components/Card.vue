@@ -1,44 +1,27 @@
 <template>
 
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img v-if="card.poster_path" :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
-            :alt="card.title ? card.title : card.name" style="width:342px;height:auto;margin-bottom:50px;">
-          <img v-else
-            src="https://media.istockphoto.com/photos/cool-placeholder-for-your-picture-no-movie-screen-35mm-film-strip-picture-id1068817392?k=6&m=1068817392&s=170667a&w=0&h=hNRjLOOQ0p0iBsSsGZzi0lDWd9eCY0IK4jNQI5sVYVI=" />
-      
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img v-if="card.poster_path" :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
+          :alt="card.title ? card.title : card.name" style="width:342px;height:500px;">
+        <img v-else
+          src="https://images.hindustantimes.com/tech/img/2020/10/28/960x540/2020-10-14T025403Z_1_LYNXMPEG9D04M_RTROPTP_3_INDIA-NETFLIX_1603252067036_1603252079667_1603863087635.JPG"
+          style="width:342px;height:500px;" />
+
+      </div>
+      <div class="flip-card-back">
+        <h4>Titolo: {{card.title ? card.title : card.name}}</h4>
+        <h4>Titolo originale: {{card.original_title}}</h4>
+        <div>
+          <h4>Rating</h4><i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'" style="color:yellow"></i>
         </div>
-        <div class="flip-card-back">
-          <h1>{{card.title ? card.title : card.name}}</h1>
-          <!-- <p>Architect & Engineer</p>
-          <p>We love that guy</p> -->
-        </div>
+        <h4>Overview: {{card.overview}}</h4>
+
       </div>
     </div>
-    <!--   <img v-if="card.poster_path"
-    :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
-    :alt="card.title ? card.title : card.name">
-    <img v-else
-    src="https://media.istockphoto.com/photos/cool-placeholder-for-your-picture-no-movie-screen-35mm-film-strip-picture-id1068817392?k=6&m=1068817392&s=170667a&w=0&h=hNRjLOOQ0p0iBsSsGZzi0lDWd9eCY0IK4jNQI5sVYVI="
-    />
-    <div >
-      <i v-for= "n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'"></i>
-    </div>
-    <br />
+  </div>
 
-    {{card.title ? card.title : card.name}}
-
-    {{card.original_title}}
-
-    {{card.vote_average}}
-
-    {{card.original_language}}
-
-    <span v-if="card.original_language == 'en'" class="flag-icon flag-icon-gb-eng"></span>
-    <span v-else v-bind:class="'flag-icon flag-icon-' + card.original_language"></span> -->
-
-    <!-- <img :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"> -->
 
 
 </template>
@@ -57,50 +40,53 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.flip-card {
-  background-color: transparent;
-  width: 342px;
-  height: 500px;
+  .flip-card {
+    background-color: transparent;
+    width: 342px;
+    height: 500px;
 
-  //perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
+  }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
 
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
+  /* Position the front and back side */
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
 
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  
-  color: black;
-}
+    h4 {
+      color: white;
+    }
+  }
 
-/* Style the back side */
-.flip-card-back {
-  background-color: black;
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
 
-  transform: rotateY(180deg);
-}
+    color: black;
+  }
 
+  /* Style the back side */
+  .flip-card-back {
+    background-color: black;
 
+    transform: rotateY(180deg);
+  }
 </style>

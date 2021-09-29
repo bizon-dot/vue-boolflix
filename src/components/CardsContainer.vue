@@ -35,15 +35,14 @@
     .cards{
       display:flex;
       flex-wrap: wrap;
-      gap: 10px;
-      gap: 10px 20px; /* row-gap column gap */
-      row-gap: 10px;
-      column-gap: 20px;
-
+      justify-content: center;
+     
+      
       li{
           list-style: none;
-          flex-basis: 100px;
-       // flex: 0 1 calc(20% - 8px);
+          padding: 30px;
+          //flex-basis: 100px;
+       
       }
     }
   }
