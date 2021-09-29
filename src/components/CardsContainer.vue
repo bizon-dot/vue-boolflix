@@ -26,23 +26,16 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "./style/general.scss";
-
-  main{
-    
-  }
-
   .movies{
     .cards{
       display:flex;
       flex-wrap: wrap;
       justify-content: center;
-     
-      
+           
       li{
           list-style: none;
           padding: 30px;
-          //flex-basis: 100px;
-       
+        
       }
     }
   }
