@@ -13,9 +13,7 @@
       <div class="flip-card-back">
         <h4>Titolo: {{card.title ? card.title : card.name}}</h4>
         <h4>Titolo originale: {{card.original_title}}</h4>
-        <div>
-          <h4>Rating</h4><i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'" style="color:yellow"></i>
-        </div>
+        <h4 >Rating:<i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'" style="color:yellow"></i></h4>
         <h4>Overview: {{card.overview}}</h4>
 
       </div>
@@ -52,7 +50,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
